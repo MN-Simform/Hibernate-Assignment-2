@@ -7,9 +7,9 @@ import java.util.List;
 public interface MovieService {
     public List<Movie> movieList();
 
-    public void addMovie(Movie movie);
+    public String addMovie(Movie movie);
 
-    public void deleteMovie(Movie movie);
+    public String deleteMovie(Movie movie);
 
     public Movie findMovie(Integer id);
 }

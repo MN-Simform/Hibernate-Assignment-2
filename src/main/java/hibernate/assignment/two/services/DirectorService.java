@@ -10,7 +10,7 @@ public interface DirectorService {
 
     public Director findDirectorId(Integer id);
 
-    public void addDirector(Director director);
+    public String addDirector(Director director);
 
-    public void deleteDirector(Director director);
+    public String deleteDirector(Director director);
 }

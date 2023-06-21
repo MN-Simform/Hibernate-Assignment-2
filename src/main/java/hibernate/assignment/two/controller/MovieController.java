@@ -30,11 +30,10 @@ public class MovieController {
 
     @RequestMapping(value = "/add_movie", method = RequestMethod.POST)
     public String addMovie(@RequestBody MovieDto movieDto){
-        if(movieDto.getMovieName() != null){
+        if(movieDto != null){
             Movie movie = modelMapper.map(movieDto, Movie.class);
             movie.setDirector(directorService.findDirectorId(movieDto.getDirector()));
-            movieService.addMovie(movie);
-            return "Movie Added Successfully";
+            return  movieService.addMovie(movie);
         }
         return "Something Went Wrong";
     }
@@ -42,8 +41,7 @@ public class MovieController {
     @RequestMapping(value = "/delete_movie/{id}", method = RequestMethod.DELETE)
     public String deleteMovie(@PathVariable Integer id){
         if(id != null){
-            movieService.deleteMovie(movieService.findMovie(id));
-            return "Movie Deleted Successfully";
+            return movieService.deleteMovie(movieService.findMovie(id));
         }
         return "Something Went Wrong";
     }

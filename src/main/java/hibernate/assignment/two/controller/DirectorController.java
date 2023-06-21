@@ -21,18 +21,16 @@ public class DirectorController {
 
     @RequestMapping(value = "/add_director", method = RequestMethod.POST)
     public String addDirector(@RequestBody Director director){
-        if(director.getFirstName() != null){
-            directorService.addDirector(director);
-            return "Director Added Successfully";
+        if(director != null){
+            return directorService.addDirector(director);
         }
         return "Operation Failed";
     }
 
     @RequestMapping(value = "/delete_director/{id}", method = RequestMethod.DELETE)
     public String deleteDirector(@PathVariable Integer id){
-        if(id != null){
-            directorService.deleteDirector(directorService.findDirectorId(id));
-            return "Record Deleted Successfully";
+        if(id != null && id >= 0){
+            return directorService.deleteDirector(directorService.findDirectorId(id));
         }
         return "Operation Failed";
     }
